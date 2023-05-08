@@ -69,8 +69,8 @@ const connectToDatabase = async () => {
 }
 
 const pipeline = [
-    // Stage 1: $match - filter the documents (checking, balance > 1500)
-    { $match: { account_type: 'checking', balance: { $gt: 1500 }  } },
+    // Stage 1: $match - filter the documents (savings, balance > 1500)
+    { $match: { account_type: 'savings', balance: { $gt: 1500 }  } },
 
     // Step 2: $sort - sorts the documents in descending order (balance)
     { $sort: { balance: -1 } },
@@ -78,15 +78,16 @@ const pipeline = [
     // Step 3: $project- project only the requested fields and one computed field (account_type, balance, gbd_balance)
     { 
         $project: {
-        _id:0,
-        account_id: 1,
-        account_type: 1,
+            _id:0,
+            account_id: 1,
+            account_type: 1,
 
-        //GBP stands for Great Britain Pound
-        gbp_balance: { $divide: [ '$balance', 1.3 ] },
-
-        }
-    }
+            //GBP stands for Great Britain Pound
+            gbp_balance: { 
+                $divide: [ '$balance', 1.3 ] 
+            },
+        },
+    },
 ]
 
 const main = async () => {
