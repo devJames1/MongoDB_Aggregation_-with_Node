@@ -78,7 +78,7 @@ const pipeline = [
     // Step 3: $project- project only the requested fields and one computed field (account_type, balance, gbd_balance)
     { 
         $project: {
-            _id:0,
+            _id: 0,
             account_id: 1,
             account_type: 1,
 
