@@ -69,8 +69,8 @@ const connectToDatabase = async () => {
 }
 
 const pipeline = [
-    // Stage 1: $match - filter the documents (savings, balance > 1500)
-    { $match: { account_type: 'savings', balance: { $gt: 1500 }  } },
+    // Stage 1: $match - filter the documents (checking, balance > 1500)
+    { $match: { account_type: 'checking', balance: { $gt: 1500 }  } },
 
     // Step 2: $sort - sorts the documents in descending order (balance)
     { $sort: { balance: -1 } },
