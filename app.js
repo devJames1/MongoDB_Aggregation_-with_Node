@@ -62,7 +62,7 @@ const dbname = 'bank'
 const connectToDatabase = async () => {
     try{
         await client.connect()
-        console.log(`Connected to the ${dbname} database \nFull connection string: ${uri}`)
+        console.log(`Connected to the ${dbname} database \nFull connection string: ${'#'}`)
     }catch (err) {
         console.error(`Error connecting to the database: ${err}`)
     }
